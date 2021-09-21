@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garage Band</title>
+</head>
+<body>
+    <h1>Band: {{band.band_name}}</h1>
+    <h3>Created by: {{band.founder.first_name}} {{band.founder.last_name}}</h3>
+    <p>Home town: {{band.home_city}}</p>
+
+    <br>
+    <a href="/dashboard">Home</a> |
+    {% if session['user_id'] == band.founder.id %} 
+                <a href='/bands/{{band.id}}/edit'>Edit</a> |
+                <a href='/bands/{{band.id}}/delete'>Delete</a>
+                {% endif %}</td>
+</body>
+</html>
