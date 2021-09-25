@@ -1,21 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Garage Band</title>
-</head>
-<body>
-    <h1>Band: {{band.band_name}}</h1>
-    <h3>Created by: {{band.founder.first_name}} {{band.founder.last_name}}</h3>
-    <p>Home town: {{band.home_city}}</p>
+{% extends 'base.html' %}
 
+{% block content %}
+
+<div class="container">
     <br>
-    <a href="/dashboard">Home</a> |
-    {% if session['user_id'] == band.founder.id %} 
-                <a href='/bands/{{band.id}}/edit'>Edit</a> |
-                <a href='/bands/{{band.id}}/delete'>Delete</a>
-                {% endif %}</td>
-</body>
-</html>
+    <h1>Band: {{band.band_name}}</h1>
+    <h3>Founder: {{band.founder.first_name}} {{band.founder.last_name}}</h3>
+    <h5>Home town: {{band.home_city}}</h5>
+    <br>
+    <div class="row">
+        <h2>History:</h2>
+        <div class="col">
+            <p>
+                The band was formed by Herb Gross (aka Herb McGovern) in Rochester, New York in    1960. The initial lineup consisted of
+                the leader Gross on guitar and vocals, Bruce Hickey on guitar, and Dave Hickey on drums. In 1961, while Gross was
+                attending the Rochester Institute of Technology, he expanded the band to include Jim Kohler on bass and Mark
+                Blumenfeld on lead guitar. The band renamed themselves the Invictas.The name was inspired by the Buick car of the
+                time known as the Invicta, meaning "invincible" in Latin. The Invictas, who used a black hearse with their band logo
+                painted on the side to haul equipment and travel from gig to gig, became a regular fixture at Tiny's Bengal Inn, a
+                local club.
+                <br>
+                <br>
+                The band was formed by Herb Gross (aka Herb McGovern) in Rochester, New York in    1960. The initial lineup consisted of
+                the leader Gross on guitar and vocals, Bruce Hickey on guitar, and Dave Hickey on drums. In 1961, while Gross was
+                attending the Rochester Institute of Technology, he expanded the band to include Jim Kohler on bass and Mark
+                Blumenfeld on lead guitar. The band renamed themselves the Invictas.The name was inspired by the Buick car of the
+                time known as the Invicta, meaning "invincible" in Latin. The Invictas, who used a black hearse with their band logo
+                painted on the side to haul equipment and travel from gig to gig, became a regular fixture at Tiny's Bengal Inn, a
+                local club.
+                <br>
+                <br>
+                The band was formed by Herb Gross (aka Herb McGovern) in Rochester, New York in    1960. The initial lineup consisted of
+                the leader Gross on guitar and vocals, Bruce Hickey on guitar, and Dave Hickey on drums. In 1961, while Gross was
+                attending the Rochester Institute of Technology, he expanded the band to include Jim Kohler on bass and Mark
+                Blumenfeld on lead guitar. The band renamed themselves the Invictas.The name was inspired by the Buick car of the
+                time known as the Invicta, meaning "invincible" in Latin. The Invictas, who used a black hearse with their band logo
+                painted on the side to haul equipment and travel from gig to gig, became a regular fixture at Tiny's Bengal Inn, a
+                local club.
+            </p>
+        </div>
+        <div class="col">
+            <img src="{{ url_for('static', filename='images/band_guitar.jpg') }}" class="img-fluid" alt="Responsive image" style="height: 700px;">
+        </div>
+    </div>
+</div>
+
+<br>
+{% if session['user_id'] == band.founder.id %}
+<a href='/bands/{{band.id}}/edit'>Edit Band</a> |
+<a href='/bands/{{band.id}}/delete'>Delete Band</a>
+{% endif %}
+<div></div>
+{% endblock %}

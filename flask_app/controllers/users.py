@@ -53,7 +53,7 @@ def user_login():
 
     session['user_id'] = user.id
     session['first_name'] = user.first_name
-    flash("Congrats, you're logged in!")
+
     return redirect('/dashboard')
 
 @app.route('/users/<int:user_id>')
